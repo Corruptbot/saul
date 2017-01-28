@@ -41,7 +41,12 @@ class BotView(generic.View):
     def post(self, request, *args, **kwargs):
         # Converts the text payload into a python dictionary
         incoming_message = json.loads(self.request.body.decode('utf-8'))
-  
-  		#AQUI
+  		
+  		# Facebook recommends going through every entry since they might send
+        # multiple messages in a single call during high load
+        for entry in incoming_message['entry']:
+            for message in entry['messaging']:
+  			#ECHO
+  			bot.send_text_message(message['sender']['id'],message['message']['text'])
 
         return HttpResponse()  
