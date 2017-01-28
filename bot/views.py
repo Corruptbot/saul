@@ -51,7 +51,7 @@ class BotView(generic.View):
                 # This might be delivery, optin, postback for other events 
                 #if 'read' in message: #Lo acaba de leer
                 if 'postback' in message:
-                    if message['postback'] == 'START':
+                    if message['postback']['payload'] == 'START':
                         initConversation(message)
                         
                     print message['postback']['payload']
