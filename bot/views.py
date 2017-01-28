@@ -51,6 +51,9 @@ class BotView(generic.View):
                 # This might be delivery, optin, postback for other events 
                 #if 'read' in message: #Lo acaba de leer
                 if 'postback' in message:
+                    if message['postback'] == 'START':
+                        initConversation(message)
+                        
                     print message['postback']['payload']
                     continue
                 if 'quick_reply' in message:
@@ -103,5 +106,17 @@ class BotView(generic.View):
                     continue
                 elif 'delivery' in message:
                     continue
+        return HttpResponse()
 
-        return HttpResponse()  
+def initConversation(message):
+    sender = message['sender']['id']
+    post_facebook_message(sender, "Bienvenido\nRecuerda mantener la calma en todo momento, en que puedo ayudarte?" )
+    quicks = []
+    button = QuickReply(content_type="text",title='Tramites',payload='inicio_tramite',image_url='http://www.cecyteh.edu.mx/images/menu/Tramites_servicios2.png')
+    quicks.append(button)
+    button = QuickReply(content_type="text",title='Transito',payload='inicio_transito',image_url='http://www.gomesdelima.adv.br/wp-content/uploads/2015/08/icon-transito-150x150.png')
+    quicks.append(button)
+    bot.send_quick_replies(message['sender']['id'],"Selecciona",quicks)
+
+
+    
