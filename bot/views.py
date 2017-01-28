@@ -3,7 +3,6 @@ from django.shortcuts import render
 # Create your views here.
 import json, requests, random, re, os
 from pprint import pprint
-import keys
 from django.views import generic
 from django.http.response import HttpResponse
 from fbWrapper.bot import Bot, Element, Button,QuickReply,QuickLocationReply
