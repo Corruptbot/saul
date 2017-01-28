@@ -11,6 +11,7 @@ from django.utils.decorators import method_decorator
 
 PAGE_ACCESS_TOKEN = os.getenv('token') #cargar al server
 VERIFY_TOKEN = "v4l1d4710n70k3n"
+print PAGE_ACCESS_TOKEN
 bot = Bot(PAGE_ACCESS_TOKEN)
 
 # Helper function
