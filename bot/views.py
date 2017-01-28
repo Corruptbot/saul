@@ -11,7 +11,6 @@ from django.utils.decorators import method_decorator
 
 PAGE_ACCESS_TOKEN = os.getenv('token') #cargar al server
 VERIFY_TOKEN = "v4l1d4710n70k3n"
-print PAGE_ACCESS_TOKEN
 bot = Bot(PAGE_ACCESS_TOKEN)
 
 # Helper function
@@ -26,16 +25,13 @@ def post_facebook_message(fbid, recevied_message):
     pprint(status.json())
 
 # Create your views here.
-class BotView(generic.View):
+class MessageView(generic.View):
     def get(self, request, *args, **kwargs): #Con esto facebook da la autorizacion al server
-        if self.request.GET['hub.mode'] == 'subscribe' and self.request.GET['hub.verify_token'] == VERIFY_TOKEN:
-            return HttpResponse(self.request.GET['hub.challenge'])
-        else:
-            return HttpResponse('Error, invalid token')
+        if self.request.GET['hub.mode'] == 'subscribe' and self.request.GET['hub.verify_token'] == VERIFY_TOKEN: return HttpResponse(self.request.GET['hub.challenge'])
+        else: return HttpResponse('Error, invalid token')
         
     @method_decorator(csrf_exempt)
-    def dispatch(self, request, *args, **kwargs):
-        return generic.View.dispatch(self, request, *args, **kwargs)
+    def dispatch(self, request, *args, **kwargs): return generic.View.dispatch(self, request, *args, **kwargs)
 
     # Post function to handle Facebook messages
     def post(self, request, *args, **kwargs):
@@ -50,3 +46,53 @@ class BotView(generic.View):
   			bot.send_text_message(message['sender']['id'],message['message']['text'])
 
         return HttpResponse()  
+
+class PostbackView(generic.View):
+    def get(self, request, *args, **kwargs): #Con esto facebook da la autorizacion al server
+        if self.request.GET['hub.mode'] == 'subscribe' and self.request.GET['hub.verify_token'] == VERIFY_TOKEN: return HttpResponse(self.request.GET['hub.challenge'])
+        else: return HttpResponse('Error, invalid token')
+        
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs): return generic.View.dispatch(self, request, *args, **kwargs)
+
+    # Post function to handle Facebook messages
+    def post(self, request, *args, **kwargs):
+        # Converts the text payload into a python dictionary
+        incoming_message = json.loads(self.request.body.decode('utf-8'))
+        
+        # Facebook recommends going through every entry since they might send
+        # multiple messages in a single call during high load
+        for entry in incoming_message['entry']:
+            print entry
+
+
+        return HttpResponse()  
+
+'''
+WELCOME TEXT
+
+curl -X POST -H "Content-Type: application/json" -d '{
+  "setting_type":"greeting",
+  "greeting":{
+    "text":"Hola {{user_first_name}}! Recuerda tomar tu tiempo y no actues por presion, yo me encargo."
+  }
+}' "https://graph.facebook.com/v2.6/me/thread_settings?access_token=TOKEN"    
+
+{{user_first_name}}
+{{user_last_name}}
+{{user_full_name}}
+
+
+STARTED BUTTON
+
+curl -X POST -H "Content-Type: application/json" -d '{
+  "setting_type":"call_to_actions",
+  "thread_state":"new_thread",
+  "call_to_actions":[
+    {
+      "payload":"START"
+    }
+  ]
+}' "https://graph.facebook.com/v2.6/me/thread_settings?access_token=TOKEN"  
+
+'''
