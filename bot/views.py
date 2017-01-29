@@ -90,7 +90,7 @@ class BotView(generic.View):
 
                     sent_text = message['message']['text']
                     if sent_text =='reset':
-                        initConversation()
+                        initConversation(message)
                     else:
                         bot.send_text_message(message['sender']['id'],message['message']['text'])
                     # Assuming the sender only sends text. Non-text messages like stickers, audio, pictures
