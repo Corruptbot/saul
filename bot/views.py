@@ -241,7 +241,7 @@ def askProcProblems(sender):
     buttons.append(button)
     button = Button(type="postback",title='Abuso de Autoridad',payload='denuncia')
     buttons.append(button)
-    bot.send_button_message(sender,"¿Cuál fue el problema que se te presento??",buttons)
+    bot.send_button_message(sender,"¿Cuál fue el problema que se te presento?",buttons)
 
 def connectOperador(sender):
     buttons = []
