@@ -16,4 +16,4 @@ class Account(models.Model):
                         
 class PoliciaTransito(models.Model):
 	p_id = models.IntegerField(verbose_name='Matricula',primary_key=True) 
-	name = models.CharField(max_length=40,verbose_name='Pais') 
+	name = models.CharField(max_length=80,verbose_name='Nombre Completo') 
