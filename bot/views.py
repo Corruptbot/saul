@@ -55,10 +55,11 @@ class BotView(generic.View):
                         initConversation(message)
                         
                     print message['postback']['payload']
+                    print 'POSTBACK'
                     continue
-                if 'quick_reply' in message:
+                if 'quick_reply' in message: #SOLO JALARA CON GEOLOCATION ?
                     print message['quick_reply']['payload']
-                    print "QUICK"
+                    print 'QUICK REPLY' 
                     continue
 
                 elif 'message' in message:
@@ -109,13 +110,13 @@ class BotView(generic.View):
                     continue
         return HttpResponse()
 
-def initConversation(message):
+def initConversation(message): 
     sender = message['sender']['id']
     post_facebook_message(sender, "Bienvenido\nRecuerda mantener la calma en todo momento, en que puedo ayudarte?" )
     quicks = []
-    button = QuickReply(content_type="quick_reply",title='Tramites',payload='inicio_tramite',image_url='http://www.cecyteh.edu.mx/images/menu/Tramites_servicios2.png')
+    button = QuickReply(content_type="text",title='Tramites',payload='i_tramite',image_url='http://www.cecyteh.edu.mx/images/menu/Tramites_servicios2.png')
     quicks.append(button)
-    button = QuickReply(content_type="quick_reply",title='Transito',payload='inicio_transito',image_url='http://www.gomesdelima.adv.br/wp-content/uploads/2015/08/icon-transito-150x150.png')
+    button = QuickReply(content_type="text",title='Transito',payload='i_transito',image_url='http://www.gomesdelima.adv.br/wp-content/uploads/2015/08/icon-transito-150x150.png')
     quicks.append(button)
     bot.send_quick_replies(message['sender']['id'],"Selecciona",quicks)
 
