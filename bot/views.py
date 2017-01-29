@@ -126,11 +126,11 @@ def askAutoContext(message):
     sender = message['sender']['id']
     post_facebook_message(sender, "Antes que nada recuerda que nadie puede hacerte bajar del coche y no permitas que te presionen con amenazas o solicitando dinero\n" )
     buttons = []
-    button = Button(type="postback",title='Error al circular(Vueltas/sentidos)',payload='velocidad')
+    button = Button(type="postback",title='Error al circular',payload='circular')
     buttons.append(button)
-    button = Button(type="postback",title='Caracteristicas de mi auto',payload='celular')
+    button = Button(type="postback",title='Algo de mi auto',payload='auto')
     buttons.append(button)
-    button = Button(type="postback",title='Acciones mientras manejaba(Celular/Cinturon)',payload='semaf')
+    button = Button(type="postback",title='Distractores',payload='distractor')
     buttons.append(button)
     bot.send_button_message(sender,"Si es algun otro podrias explicarmelo?",buttons)
 
