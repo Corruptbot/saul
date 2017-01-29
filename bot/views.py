@@ -86,6 +86,8 @@ class BotView(generic.View):
                             if attachment['type']=='location':
                                 coor = attachment['payload']['coordinates']
                                 bot.send_text_message(user.fb_user,"El limite de velocidad en la calle de San Luis Potosi es 40km/hr")
+                                    for i in velocidad_info:
+                                        bot.send_text_message(user.fb_user,i)
                                 #print coor['lat']
                                 #print coor['long']
                         continue
@@ -159,7 +161,7 @@ class BotView(generic.View):
 def initConversation(message): 
     sender = message['sender']['id']
     print sender
-    post_facebook_message(sender, "Bienvenido\nRecuerda mantener la calma en todo momento, en que puedo ayudarte?" )
+    post_facebook_message(sender, "Bienvenid@! en que puedo ayudarte?" )
     quicks = []
     button = QuickReply(content_type="text",title='Tramites',payload='i_tramite',image_url='http://www.cecyteh.edu.mx/images/menu/Tramites_servicios2.png')
     quicks.append(button)
@@ -180,6 +182,7 @@ def initTransit(message):
 
 def askAutoContext(message): 
     sender = message['sender']['id']
+    post_facebook_message(sender, 'Recuerda mantener la calma en todo momento y solicita la matricula y nombre del oficial')
     buttons = []
     button = Button(type="postback",title='Giro indebido',payload='circular')
     buttons.append(button)
