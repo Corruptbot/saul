@@ -136,10 +136,7 @@ def askAutoContext(message):
     buttons.append(button)
     button = QuickReply(type="text",title='Vueltas prohibidas',payload='vueltas')
     buttons.append(button)
-    button = QuickReply(type="text",title='Verificacion',payload='verific')
-    buttons.append(button)
-    button = QuickReply(type="text",title='Cinturon de seguridad',payload='cinturon')
-    buttons.append(button)
+
     bot.send_button_message(sender,"Selecciona",buttons)
 
 '''
