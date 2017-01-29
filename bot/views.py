@@ -114,9 +114,9 @@ class BotView(generic.View):
                     sent_text = message['message']['text']
                     
                     resp = WIT.message(sent_text)
-                    if resp.entities:
-                        for entitie in resp.entities:
-                            print entities
+                    if resp['entities']:
+                        for entitie in resp['entities']:
+                            print entitie
                             bot.send_text_message(user.fb_user,sent_text)
                     else:
                         initConversation(message)
