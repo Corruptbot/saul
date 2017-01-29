@@ -145,7 +145,8 @@ class BotView(generic.View):
 
                         bot.send_text_message(user.fb_user, asText)
                     else:
-                        initConversation(message)
+                        pass
+                        #initConversation(message)
                     # Assuming the sender only sends text. Non-text messages like stickers, audio, pictures
                     # are sent as attachments and must be handled accordingly.     
                 elif 'read' in message:
