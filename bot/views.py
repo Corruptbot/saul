@@ -63,10 +63,8 @@ class BotView(generic.View):
                     continue
 
                 elif 'message' in message:
-                    # Print the message to the terminal
-                    if 'is_echo' in message['message']: 
-                        continue
-                    elif 'attachments' in message['message']:
+
+                    if 'attachments' in message['message']:
                         print message['message']['attachments']
                         
                         for attachment in message['message']['attachments']:
@@ -75,33 +73,24 @@ class BotView(generic.View):
                                 print coor['lat']
                                 print coor['long']
                         continue
+                    
+                    sent_text = message['message']['text']
 
-                    elif message['message']['text']=='img': #Enviar lista de imagenes
-                        elements = []
-                        element = Element(title="test", image_url="https://marco.org/media/2016/01/md101lla.png", subtitle="subtitle", item_url="http://arsenal.com")
-                        elements.append(element)
-                        element1 = Element(title="test1", image_url="https://marco.org/media/2016/01/md101lla.png", subtitle="subtitle", item_url="http://apple.com")
-                        elements.append(element1)
-                        bot.send_generic_message(message['sender']['id'], elements)
-                    elif message['message']['text']=='moonman':
-                        video = 'https://s3-us-west-2.amazonaws.com/cuadra-apps/moonman.mp4'
-                        #bot.send_video_url(message['sender']['id'] ,video)
-                    elif message['message']['text'] == 'button':
-                        buttons = []
-                        button = Button(type="web_url",url='https://petersapparel.parseapp.com',title='Show Website')
-                        buttons.append(button)
-                        button1 = Button(type="postback",title='Start chat',payload='My payload')
-                        buttons.append(button1)
-                        bot.send_button_message(message['sender']['id'],"Bienvenido",buttons)
-                    elif message['message']['text'] == 'quick':
-                        quicks = []
-                        button = QuickLocationReply()
-                        quicks.append(button)
-                        button1 = QuickReply(content_type="text",title='red',image_url='http://petersfantastichats.com/img/red.png',payload='My payload')
-                        quicks.append(button1)
-                        bot.send_quick_replies(message['sender']['id'],"Selecciona",quicks)
-                    else:
-                        bot.send_text_message(message['sender']['id'],message['message']['text'])
+                    if sent_text == 'i_tramite':
+                        bot.send_text_message(message['sender']['id'],'Aun no esta disponible')
+                        initConversation()
+                    elif sent_text == 'i_transito':
+                        initTransit(message)
+                    elif sent_text == '2_moto':
+                        pass
+                    elif sent_text == '2_auto':
+                        askAutoContext(message)
+                    elif sent_text == '2_bici':
+                        pass
+
+                    
+                    
+                    bot.send_text_message(message['sender']['id'],message['message']['text'])
                     # Assuming the sender only sends text. Non-text messages like stickers, audio, pictures
                     # are sent as attachments and must be handled accordingly.     
                 elif 'read' in message:
@@ -119,5 +108,20 @@ def initConversation(message):
     button = QuickReply(content_type="text",title='Transito',payload='i_transito',image_url='http://www.gomesdelima.adv.br/wp-content/uploads/2015/08/icon-transito-150x150.png')
     quicks.append(button)
     bot.send_quick_replies(message['sender']['id'],"Selecciona",quicks)
+
+def initTransit(message): 
+    sender = message['sender']['id']
+    quicks = []
+    button = QuickReply(content_type="text",title='Moto',payload='2_moto',image_url='http://www.fancyicons.com/free-icons/232/transport/png/256/motorcycle_256.png')
+    quicks.append(button)
+    button = QuickReply(content_type="text",title='Automovil',payload='2_auto',image_url='https://image.freepik.com/iconos-gratis/delantera-del-coche-sedan_318-64441.jpg')
+    quicks.append(button)
+    button = QuickReply(content_type="text",title='Bicicleta',payload='2_bici',image_url='http://www.iconarchive.com/download/i95552/iconsmind/outline/Bicycle.ico')
+    quicks.append(button)
+    bot.send_quick_replies(message['sender']['id'],"En que vehiculo te encuentras?",quicks)
+
+def askAutoContext(message): 
+    sender = message['sender']['id']
+    
 
 
