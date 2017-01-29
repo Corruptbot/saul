@@ -190,7 +190,7 @@ def askAutoContext(message):
     buttons.append(button)
     button = Button(type="postback",title='Pasarse alto',payload='alto')
     buttons.append(button)
-    bot.send_button_message(sender,"Antes que nada recuerda que nadie puede hacerte bajar del coche y no permitas que te presionen con amenazas o solicitando dinero\n" ,buttons)
+    bot.send_button_message(sender,"Antes que nada recuerda que: El agente no puede exigirte que bajes de tu auto si la infracción que cometiste no es grave, no permitas que te presionen\n" ,buttons)
     post_facebook_message(sender,"Si es algun otro podrias explicarmelo o ayudame a identificar al oficial que te detuvo enviandome su matricula?" )
 
 '''
