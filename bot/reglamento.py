@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 giro_indebido = [] 
 giro_indebido[0]= '''
 Artículo 10: En las glorietas los coches que se encuentran circulando dentro de ellas tienen preferencia, asi como los vehículos que deseen salir de las mismas. (Fracción IX)
