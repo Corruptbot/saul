@@ -137,9 +137,9 @@ def askAutoContext(message):
     buttons.append(button)
     button = Button(type="postback",title='Distractores',payload='distractor')
     buttons.append(button)
-    post_facebook_message(sender,"Si es algun otro podrias explicarmelo?" )
     bot.send_button_message(sender,"Antes que nada recuerda que nadie puede hacerte bajar del coche y no permitas que te presionen con amenazas o solicitando dinero\n" ,buttons)
-
+    post_facebook_message(sender,"Si es algun otro podrias explicarmelo?" )
+    
 '''
 curl -X POST -H "Content-Type: application/json" -d '{
   "setting_type" : "call_to_actions",
