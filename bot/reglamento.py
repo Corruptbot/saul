@@ -29,7 +29,7 @@ velocidad_info = []
 #velocidad_info.append('''Articulo 9 y 34 del Reglamento de Transito, si quieres saber mas sobre ellos preguntame''')
 
 proceso_infraccion = ['''
-Debes tener:
+Para el proceso deberas tener:
 -Tarjeta de circulación 
 -Licencia 
 -Seguro de autos\n
