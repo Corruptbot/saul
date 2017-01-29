@@ -108,6 +108,7 @@ class BotView(generic.View):
 
 def initConversation(message): 
     sender = message['sender']['id']
+    print sender
     post_facebook_message(sender, "Bienvenido\nRecuerda mantener la calma en todo momento, en que puedo ayudarte?" )
     quicks = []
     button = QuickReply(content_type="text",title='Tramites',payload='i_tramite',image_url='http://www.cecyteh.edu.mx/images/menu/Tramites_servicios2.png')
