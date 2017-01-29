@@ -60,6 +60,7 @@ class BotView(generic.View):
                         quicks = []
                         quicks.append(QuickLocationReply() )
                         bot.send_quick_replies(user.fb_user,"Selecciona",quicks)
+                        user.setState(33)
 
                     print message['postback']['payload']
                     continue
