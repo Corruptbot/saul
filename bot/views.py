@@ -58,6 +58,7 @@ class BotView(generic.View):
                     continue
                 if 'quick_reply' in message:
                     print message['quick_reply']['payload']
+                    print "QUICK"
                     continue
 
                 elif 'message' in message:
@@ -119,4 +120,3 @@ def initConversation(message):
     bot.send_quick_replies(message['sender']['id'],"Selecciona",quicks)
 
 
-    
