@@ -60,8 +60,6 @@ class BotView(generic.View):
                     print message['postback']['payload']
                     continue
                 elif 'message' in message:
-                    {u'timestamp': 1485649341730, u'message': {u'text': u'Tramites', u'mid': u'mid.1485649341730:37fcf12738', u'seq': 35426, u'quick_reply': {u'payload': u'i_tramite'}}, u'recipient': {u'id': u'759711370868773'}, u'sender': {u'id': u'1751510654874973'}}
-
                     if 'quick_reply' in message['message']: #SOLO JALARA CON GEOLOCATION ?
                         payload = message['message']['quick_reply']['payload']
                         print payload
