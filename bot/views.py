@@ -124,8 +124,8 @@ class BotView(generic.View):
                                 nums.add(entitie['value'])
                             else:
                                 vals.add(entitie['value'])
-                            #asText+=('%s %s \n'%(entitie['confidence'],entitie['value']))
-                            #print entitie
+                            asText+=('%s %s \n'%(entitie['confidence'],entitie['value']))
+                            print entitie
 
                         if 'policia' in vals and nums: #Match de policia y matricula
                             for element in nums:    #iterar entre numeros obtenidos
@@ -138,7 +138,7 @@ class BotView(generic.View):
                         if 'celular' in vals:
                             for i in distractor:
                                 bot.send_text_message(user.fb_user,i)
-                            continue
+                            
 
 
                         bot.send_text_message(user.fb_user, asText)
