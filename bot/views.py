@@ -59,7 +59,7 @@ class BotView(generic.View):
                     elif payload == 'velocidad':
                         quicks = []
                         quicks.append(QuickLocationReply() )
-                        bot.send_quick_replies(user.fb_user,"Selecciona",quicks)
+                        bot.send_quick_replies(user.fb_user,"Donde te encuentras?",quicks)
                         user.setState(33)
 
                     print message['postback']['payload']
