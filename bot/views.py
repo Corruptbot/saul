@@ -9,6 +9,7 @@ from fbWrapper.bot import Bot, Element, Button,QuickReply,QuickLocationReply
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 from .models import *
+from reglamento import *
 from wit import Wit
 
 def send(request, response):print 'Sending to user...', response['text']
@@ -69,6 +70,13 @@ class BotView(generic.View):
                         quicks.append(QuickLocationReply() )
                         bot.send_quick_replies(user.fb_user,"Donde te encuentras?",quicks)
                         user.setState(33) #En vehiculo y relacionado a velocidad
+                    elif payload == 'circular':
+                        for text in giro_indebido:
+                            bot.send_text_message(user.fb_user,text)
+
+                    elif payload == 'distractor':
+                        for text in giro_indebido:
+                            bot.send_text_message(user.fb_user,text)
 
                     print message['postback']['payload']
                     continue
