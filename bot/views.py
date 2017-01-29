@@ -117,7 +117,7 @@ class BotView(generic.View):
                     if resp.entities:
                         for entitie in resp.entities:
                             print entities
-                            bot.send_text_message(user.fb_user,message['message']['text'])
+                            bot.send_text_message(user.fb_user,sent_text)
                     else
                         initConversation(message)
                     # Assuming the sender only sends text. Non-text messages like stickers, audio, pictures
