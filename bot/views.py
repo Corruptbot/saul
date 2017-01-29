@@ -127,6 +127,7 @@ class BotView(generic.View):
                             asText+=('%s %s \n'%(entitie['confidence'],entitie['value']))
                             print entitie
 
+                        print nums
                         if 'policia' in vals and nums: #Match de policia y matricula
                             for element in nums:    #iterar entre numeros obtenidos
                                 if str(element).size == 6: #MAtricula
