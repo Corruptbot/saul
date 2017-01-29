@@ -14,4 +14,4 @@ access_token = '5U7WOSQ7QB3OBE47OFRUHQDLRKH6PF7P'
 
 client = Wit(access_token=access_token, actions=actions)
 resp = client.message('Hola')
-print str(resp)
+print 'Yay, got Wit.ai response: ' + str(resp)
