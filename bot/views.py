@@ -133,7 +133,7 @@ class BotView(generic.View):
                                 if len(str(element)) == 6: #MAtricula
                                     poli = PoliciaTransito.objects.get(p_id=int(element))
                                     if poli:
-                                        bot.send_text_message(user.fb_user,'El policia con matricula '+poli.p_id+' y nombre '+poli.name+"tiene la autoridad para infraccionarte")
+                                        bot.send_text_message(user.fb_user,'El policia con matricula '+str(poli.p_id)+' y nombre '+poli.name+"tiene la autoridad para infraccionarte")
                                     else:
                                         bot.send_text_message(user.fb_user,"El policia no tiene la autoridad para infraccionarte")
                         if 'celular' in vals:
