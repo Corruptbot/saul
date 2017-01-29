@@ -135,21 +135,23 @@ class BotView(generic.View):
                             asText+=('%s %s \n'%(entitie['confidence'],entitie['value']))
                             print entitie
 
+                    if 'ayuda' in vals or 'Saludo' in vals:
+                        initConversation()
+                        
+                    if 'policia' in vals and nums: #Match de policia y matricula
+                        for element in nums:    #iterar entre numeros obtenidos
+                            if len(str(element)) == 6: #MAtricula
+                                poli = PoliciaTransito.objects.filter(p_id=int(element)).first()
 
-                        if 'policia' in vals and nums: #Match de policia y matricula
-                            for element in nums:    #iterar entre numeros obtenidos
-                                if len(str(element)) == 6: #MAtricula
-                                    poli = PoliciaTransito.objects.filter(p_id=int(element)).first()
-
-                                    if poli:
-                                        bot.send_text_message(user.fb_user,'El policia con matricula '+str(poli.p_id)+' y nombre '+poli.name+" tiene la autoridad para infraccionarte ")
-                                    else:
-                                        bot.send_text_message(user.fb_user,"El policia no tiene la autoridad para infraccionarte ")
-                                break
-                        if 'celular' in vals:
-                            for i in distractor:
-                                bot.send_text_message(user.fb_user,i)
-                            continue    
+                                if poli:
+                                    bot.send_text_message(user.fb_user,'El policia con matricula '+str(poli.p_id)+' y nombre '+poli.name+" tiene la autoridad para infraccionarte ")
+                                else:
+                                    bot.send_text_message(user.fb_user,"El policia no tiene la autoridad para infraccionarte ")
+                            break
+                    if 'celular' in vals:
+                        for i in distractor:
+                            bot.send_text_message(user.fb_user,i)
+                        continue    
 
 
                         #bot.send_text_message(user.fb_user, asText)
