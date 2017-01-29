@@ -220,7 +220,9 @@ def askAutoContext(message):
     buttons.append(button)
     post_facebook_message(sender,"El agente no puede exigirte que bajes de tu auto si la infracción que cometiste no es grave, no permitas que te presionen\n")
     post_facebook_message(sender,"Nadie puede revisar tu auto sin una orden judicial")
-    bot.send_button_message(sender,"Si es algun otro podrias explicarmelo o ayudame a identificar al oficial que te detuvo enviandome su matricula?",buttons)
+    bot.send_button_message(sender,"Cuál fue la razón de la detención?",buttons)
+    post_facebook_message(sender,"Si es algun otro podrias explicarlo o ayudarme a identificar al oficial que te detuvo enviandome su matrícula")
+
 
 def askRightProcess(sender):
     for t in proceso_infraccion:
