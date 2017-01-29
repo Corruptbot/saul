@@ -37,6 +37,17 @@ def post_facebook_message(fbid, recevied_message):
     status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
     pprint(status.json())
 
+def send_writing(sender):
+    return
+    '''
+    curl -X POST -H "Content-Type: application/json" -d '{
+  "recipient":{
+    "id":"USER_ID"
+  },
+  "sender_action":"typing_on"
+}' "https://graph.facebook.com/v2.6/me/messages?access_token=PAGE_ACCESS_TOKEN"    
+    '''
+
 # Create your views here.
 class BotView(generic.View):
     def get(self, request, *args, **kwargs): #Con esto facebook da la autorizacion al server
@@ -59,6 +70,7 @@ class BotView(generic.View):
         for entry in incoming_message['entry']:
             for message in entry['messaging']:
                 user,created = Account.objects.get_or_create(fb_user=int(message['sender']['id']))
+                send_writing(user.fb_user)
                 print message
                 # Check to make sure the received call is a message call
                 # This might be delivery, optin, postback for other events 
@@ -80,6 +92,7 @@ class BotView(generic.View):
                         for text in alto_info:
                             bot.send_text_message(user.fb_user,text)
                     elif payload == "denuncia":
+                        connectOperador(user.fb_user)
                         pass
 
                     print message['postback']['payload']
@@ -226,6 +239,12 @@ def askProcProblems(sender):
     button = Button(type="postback",title='Abuso de Autoridad',payload='denuncia')
     buttons.append(button)
     bot.send_button_message(sender,"Otro?",buttons)
+
+def connectOperador(sender):
+    buttons = []
+    button = Button(type="phone_number",title='Denunciar',payload='52082337')
+    buttons.append(button)
+    bot.send_button_message(sender,"Comunicate con un operador",buttons)
 
 '''
 curl -X POST -H "Content-Type: application/json" -d '{
