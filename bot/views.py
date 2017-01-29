@@ -74,6 +74,7 @@ class BotView(generic.View):
                             #user.setState(2)
                         elif payload == '2_moto':
                             #user.setState(21)
+                            pass
                         elif payload == '2_auto':
                             askAutoContext(message)
                             #user.setState(22)
@@ -82,7 +83,7 @@ class BotView(generic.View):
                             #user.setState(23)
                         else:
                             print "QUICK"
-                            continue
+                        continue
         
                     if 'attachments' in message['message']:
                         print message['message']['attachments']
