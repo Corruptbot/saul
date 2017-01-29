@@ -16,11 +16,11 @@ distractor.append('''
 Artículo 38: Se prohíbe utilizar o manejar cualquier aparato electrónico o de comunicación mientras el automóvil se encuentra en movimiento. Así como distractores como mapas o cualquier objeto que afecte la visibilidad y pueda ser un distractor. (Apartado II)
 Recuerda sólo puedes utilizar tu celular cuando el vehículo está detenido.''')
 
-alto = []
-alto.append('''
+alto_info = []
+alto_info.append('''
 Artículo 10: Cuando la luz del semáforo sea roja el auto tendrá que detenerse totalmente antes de la línea de “alto” sin invadir el área peatonal.
 Si existe congestionamiento vial el conductor no deberá avanzar hasta estar seguro que habrá lugar suficiente para realizar el cruce sin invadir la calle.
 ''')
-alto.append('''
+alto_info.append('''
 Si los semáforos se encuentran parpadeando el conductor deberá bajar la velocidad y cruzar con precaución, teniendo preferencia el conductor con las luces del semáforo ámbar sobre el que las tenga rojas.
 Entre las 23:00 horas y las 5:00 horas del día siguiente, los conductores podrán cruzar las intersecciones incluso cuando el semáforo se encuentre en rojo, esto solo después de haberse detenido completamente y revisar que no se ponga en riesgo a ningún otro vehículo o peatón. (Fracción IV)''')
