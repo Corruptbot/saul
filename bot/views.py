@@ -54,6 +54,7 @@ class BotView(generic.View):
                 #if 'read' in message: #Lo acaba de leer
                 if 'postback' in message:
                     if message['postback']['payload'] == 'START':
+                        print 'START'
                         initConversation(message)
                         user.setState(0)
 
@@ -62,7 +63,7 @@ class BotView(generic.View):
                 elif 'message' in message:
                     if 'quick_reply' in message['message']: #SOLO JALARA CON GEOLOCATION ?
                         payload = message['message']['quick_reply']['payload']
-                        print payload
+
                         if payload == 'i_tramite':
                             bot.send_text_message(message['sender']['id'],'Aun no esta disponible')
                             user.setState(1)
