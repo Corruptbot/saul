@@ -119,7 +119,7 @@ class BotView(generic.View):
                     for i in resp['entities']:
                         section = resp['entities'][i] #number, entitie, etc
                         for entitie in section:
-                            asText+=('%s %s %\n'%(entitie['confidence'],entitie['value']))
+                            asText+=('%s %s \n'%(entitie['confidence'],entitie['value']))
                             print entitie
                         bot.send_text_message(user.fb_user, asText)
                     else:
