@@ -233,13 +233,13 @@ def askRightProcess(sender):
 
 def askProcProblems(sender): 
     buttons = []
-    button = Button(type="postback",title='Dinero en Efectivo(Mordida)',payload='denuncia')
+    button = Button(type="postback",title='Intento de Corrupcion',payload='denuncia')
     buttons.append(button)
     button = Button(type="postback",title='Violencia verbal',payload='denuncia')
     buttons.append(button)
     button = Button(type="postback",title='Abuso de Autoridad',payload='denuncia')
     buttons.append(button)
-    bot.send_button_message(sender,"Otro?",buttons)
+    bot.send_button_message(sender,"Cual fue el problema que se presento?",buttons)
 
 def connectOperador(sender):
     buttons = []
