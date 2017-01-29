@@ -171,6 +171,7 @@ def initConversation(message):
 
 def initTransit(message): 
     sender = message['sender']['id']
+    post_facebook_message(sender, 'Recuerda mantener la calma en todo momento y solicita la matricula y nombre del oficial')
     quicks = []
     button = QuickReply(content_type="text",title='Moto',payload='2_moto',image_url='http://www.fancyicons.com/free-icons/232/transport/png/256/motorcycle_256.png')
     quicks.append(button)
@@ -182,7 +183,6 @@ def initTransit(message):
 
 def askAutoContext(message): 
     sender = message['sender']['id']
-    post_facebook_message(sender, 'Recuerda mantener la calma en todo momento y solicita la matricula y nombre del oficial')
     buttons = []
     button = Button(type="postback",title='Giro indebido',payload='circular')
     buttons.append(button)
@@ -191,7 +191,7 @@ def askAutoContext(message):
     button = Button(type="postback",title='Pasarse alto',payload='alto')
     buttons.append(button)
     bot.send_button_message(sender,"Antes que nada recuerda que nadie puede hacerte bajar del coche y no permitas que te presionen con amenazas o solicitando dinero\n" ,buttons)
-    post_facebook_message(sender,"Si es algun otro podrias explicarmelo?" )
+    post_facebook_message(sender,"Si es algun otro podrias explicarmelo o ayudame a identificar al oficial que te detuvo enviandome su matricula?" )
 
 '''
 curl -X POST -H "Content-Type: application/json" -d '{
