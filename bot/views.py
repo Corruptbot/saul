@@ -229,23 +229,23 @@ def askRightProcess(sender):
     buttons.append(button)
     button = QuickReply(content_type="text",title='No',payload='wrong_proc')
     buttons.append(button)
-    bot.send_quick_replies(sender,"Tu proceso se llevo asi?",buttons)
+    bot.send_quick_replies(sender,"¿El proceso se llevó acabo de la forma correcta?",buttons)
 
 def askProcProblems(sender): 
     buttons = []
-    button = Button(type="postback",title='Intento de Corrupcion',payload='denuncia')
+    button = Button(type="postback",title='Intento de Corrupción',payload='denuncia')
     buttons.append(button)
-    button = Button(type="postback",title='Violencia verbal',payload='denuncia')
+    button = Button(type="postback",title='Faltas de Respeto',payload='denuncia')
     buttons.append(button)
     button = Button(type="postback",title='Abuso de Autoridad',payload='denuncia')
     buttons.append(button)
-    bot.send_button_message(sender,"Cual fue el problema que se presento?",buttons)
+    bot.send_button_message(sender,"¿Cuál fue el problema que se te presento??",buttons)
 
 def connectOperador(sender):
     buttons = []
     button = Button(type="phone_number",title='Denunciar',payload='52082337')
     buttons.append(button)
-    bot.send_button_message(sender,"Comunicate con un operador",buttons)
+    bot.send_button_message(sender,"La corrupción es un delito, ayúdanos a denunciar a este servidor público",buttons)
 
 '''
 curl -X POST -H "Content-Type: application/json" -d '{
