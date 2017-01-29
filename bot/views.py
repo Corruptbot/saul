@@ -75,7 +75,7 @@ class BotView(generic.View):
                             bot.send_text_message(user.fb_user,text)
 
                     elif payload == 'distractor':
-                        for text in giro_indebido:
+                        for text in distractor:
                             bot.send_text_message(user.fb_user,text)
 
                     print message['postback']['payload']
