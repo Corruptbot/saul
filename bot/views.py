@@ -118,7 +118,7 @@ class BotView(generic.View):
                     nums = set()
                     for i in resp['entities']:
                         section = resp['entities'][i] #number, entitie, etc
-                        n = 'number' == section:
+                        n = ('number' == section)
                         for entitie in section:
                             if n: #If is number
                                 nums.add(entitie['value'])
