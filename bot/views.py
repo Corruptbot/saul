@@ -124,18 +124,15 @@ def initTransit(message):
 
 def askAutoContext(message): 
     sender = message['sender']['id']
-    #post_facebook_message(sender, "Antes que nada recuerda que nadie puede hacerte bajar del coche y no permitas que te presionen con amenazas o solicitando dinero\n" )
+    post_facebook_message(sender, "Antes que nada recuerda que nadie puede hacerte bajar del coche y no permitas que te presionen con amenazas o solicitando dinero\n" )
     buttons = []
-    print 'AUTO'
-    #Antes que nada recuerda que nadie puede hacerte bajar del coche y no permitas que te presionen con amenazas o solicitando dinero
-    button = Button(type="postback",title='Velocidad',payload='velocidad')
+    button = Button(type="postback",title='Error al circular(Vueltas/sentidos)',payload='velocidad')
     buttons.append(button)
-    button = Button(type="postback",title='Celular',payload='celular')
+    button = Button(type="postback",title='Caracteristicas de mi auto',payload='celular')
     buttons.append(button)
-    button = Button(type="postback",title='Semaforos',payload='semaf')
+    button = Button(type="postback",title='Acciones mientras manejaba(Celular/Cinturon)',payload='semaf')
     buttons.append(button)
-    
-    bot.send_button_message(sender,"Selecciona",buttons)
+    bot.send_button_message(sender,"Si es algun otro podrias explicarmelo?",buttons)
 
 '''
 curl -X POST -H "Content-Type: application/json" -d '{
