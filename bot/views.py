@@ -105,9 +105,9 @@ class BotView(generic.View):
                                 for i in velocidad_info:
                                     bot.send_text_message(user.fb_user,i)
                                 current_cost = 73.57
-                                bot.send_text_message(user.fb_user,"El limite de velocidad en: Calle San Luis Potosi es 40km/hr que pertenece a Fracción I,II y III\nPrecio de la multa")
-                                bot.send_image_url(user.fb_user,"https://s3-us-west-2.amazonaws.com/cuadra-apps/Art9.png")                                
+                                bot.send_text_message(user.fb_user,"El limite de velocidad en: Calle San Luis Potosi es 40km/hr que pertenece a Fracción I,II y III\n")
                                 bot.send_text_message(user.fb_user,"La Unidad de Cuenta de CDMX vale %s, la multa costaria entre $%s y $%s"%(current_cost,current_cost*10,current_cost*20))
+                                bot.send_image_url(user.fb_user,"https://s3-us-west-2.amazonaws.com/cuadra-apps/Art9.png")                                
                                 bot.send_text_message(user.fb_user,"Podrias compartirme la matricula del oficial?")
                                 
                                 #print coor['lat']
@@ -224,11 +224,12 @@ def askAutoContext(message):
 
 def askRightProcess(sender):
     bot.send_text_message(sender,"EL PROCESO DE PAGAR MULTAS ES:")
+    buttons = []
     button = QuickReply(content_type="text",title='Si',payload='correct_proc')
-    quicks.append(button)
+    buttons.append(button)
     button = QuickReply(content_type="text",title='No',payload='wrong_proc')
-    quicks.append(button)
-    bot.send_quick_replies(sender,"Tu proceso se llevo asi?",quicks)
+    buttons.append(button)
+    bot.send_quick_replies(sender,"Tu proceso se llevo asi?",buttons)
 
 def askProcProblems(sender): 
     buttons = []
