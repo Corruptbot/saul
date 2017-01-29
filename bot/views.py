@@ -47,7 +47,6 @@ class BotView(generic.View):
         # multiple messages in a single call during high load
         for entry in incoming_message['entry']:
             for message in entry['messaging']:
-                user,created = Account.objects.get_or_create(fb_user = int(message['sender']['id']))
                 print message
                 # Check to make sure the received call is a message call
                 # This might be delivery, optin, postback for other events 
@@ -56,8 +55,7 @@ class BotView(generic.View):
                     if message['postback']['payload'] == 'START':
                         print 'START'
                         initConversation(message)
-                        user.setState(0)
-
+                        
                     print message['postback']['payload']
                     continue
                 elif 'message' in message:
@@ -66,18 +64,17 @@ class BotView(generic.View):
 
                         if payload == 'i_tramite':
                             bot.send_text_message(message['sender']['id'],'Aun no esta disponible')
-                            user.setState(1)
                             initConversation(message)
                         elif payload == 'i_transito':
                             initTransit(message)
-                            user.setState(2)
+                            
                         elif payload == '2_moto':
-                            user.setState(21)
+                            pass
                         elif payload == '2_auto':
                             askAutoContext(message)
-                            user.setState(22)
+                            
                         elif payload == '2_bici':
-                            user.setState(23)
+                            pass
                         else:
                             print "QUICK"
                         continue
