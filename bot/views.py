@@ -128,11 +128,11 @@ def initTransit(message):
 def askAutoContext(message): 
     sender = message['sender']['id']
     buttons = []
-    button = Button(type="postback",title='Error al circular',payload='circular')
+    button = Button(type="postback",title='Giro indebido',payload='circular')
     buttons.append(button)
-    button = Button(type="postback",title='Algo de mi auto',payload='auto')
+    button = Button(type="postback",title='Exceso de velocidad',payload='velocidad')
     buttons.append(button)
-    button = Button(type="postback",title='Distractores',payload='distractor')
+    button = Button(type="postback",title='Pasarse alto',payload='distractor')
     buttons.append(button)
     bot.send_button_message(sender,"Antes que nada recuerda que nadie puede hacerte bajar del coche y no permitas que te presionen con amenazas o solicitando dinero\n" ,buttons)
     post_facebook_message(sender,"Si es algun otro podrias explicarmelo?" )
