@@ -9,3 +9,8 @@ class Account(models.Model):
 
     def __str__(self):
         return self.fb_user
+
+    def setState(self,state):
+    	self.state = state
+    	self.save()
+                        
