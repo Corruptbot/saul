@@ -102,7 +102,6 @@ class BotView(generic.View):
                         continue
          
                     sent_text = message['message']['text']
-                    
                     resp = WIT.message(sent_text)
                     
                     asText = ""
