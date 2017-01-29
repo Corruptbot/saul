@@ -128,7 +128,18 @@ def askAutoContext(message):
     buttons = []
     print 'AUTO'
     #Antes que nada recuerda que nadie puede hacerte bajar del coche y no permitas que te presionen con amenazas o solicitando dinero
-    button = Button(type="postback",title='Start chat',payload='My payload')
+    button = Button(type="postback",title='Velocidad',payload='velocidad')
     buttons.append(button)
+    button = Button(type="postback",title='Celular',payload='celular')
+    buttons.append(button)
+    button = Button(type="postback",title='Semaforos',payload='semaf')
+    buttons.append(button)
+    button = Button(type="postback",title='Vueltas prohibidas',payload='vueltas')
+    buttons.append(button)
+    button = Button(type="postback",title='Verificacion',payload='verific')
+    buttons.append(button)
+    button = Button(type="postback",title='Cinturon de seguridad',payload='cinturon')
+    buttons.append(button)
+
     bot.send_button_message(sender,"Selecciona",buttons)
 
