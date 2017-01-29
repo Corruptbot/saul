@@ -75,7 +75,7 @@ class BotView(generic.View):
                             bot.send_text_message(user.fb_user,text)
 
                     elif payload == 'alto':
-                        for text in alto:
+                        for text in alto_info:
                             bot.send_text_message(user.fb_user,text)
 
                     print message['postback']['payload']
