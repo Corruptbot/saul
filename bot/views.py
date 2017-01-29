@@ -67,16 +67,18 @@ class BotView(generic.View):
                         print payload
                         if payload == 'i_tramite':
                             bot.send_text_message(message['sender']['id'],'Aun no esta disponible')
+                            user.setState(1)
                             initConversation(message)
                         elif payload == 'i_transito':
                             initTransit(message)
+                            user.setState(2)
                         elif payload == '2_moto':
-                            pass
+                            user.setState(21)
                         elif payload == '2_auto':
                             askAutoContext(message)
-                            user.setState(1)
+                            user.setState(22)
                         elif payload == '2_bici':
-                            pass
+                            user.setState(23)
                         else:
                             print "QUICK"
                         continue
