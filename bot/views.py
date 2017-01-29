@@ -55,7 +55,7 @@ class BotView(generic.View):
                 if 'postback' in message:
                     if message['postback']['payload'] == 'START':
                         initConversation(message)
-                        user.save(0)
+                        user.setState(0)
 
                     print message['postback']['payload']
                     continue
