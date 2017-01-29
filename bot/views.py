@@ -47,7 +47,7 @@ class BotView(generic.View):
         # multiple messages in a single call during high load
         for entry in incoming_message['entry']:
             for message in entry['messaging']:
-                user,created = Account.objects.get_or_create(fb_user = int(message['sender']['id']))
+                #user,created = Account.objects.get_or_create(fb_user = int(message['sender']['id']))
                 print message
                 # Check to make sure the received call is a message call
                 # This might be delivery, optin, postback for other events 
@@ -67,18 +67,19 @@ class BotView(generic.View):
                         print payload
                         if payload == 'i_tramite':
                             bot.send_text_message(message['sender']['id'],'Aun no esta disponible')
-                            user.setState(1)
+                            #user.setState(1)
                             initConversation(message)
                         elif payload == 'i_transito':
                             initTransit(message)
-                            user.setState(2)
+                            #user.setState(2)
                         elif payload == '2_moto':
-                            user.setState(21)
+                            #user.setState(21)
                         elif payload == '2_auto':
                             askAutoContext(message)
-                            user.setState(22)
+                            #user.setState(22)
                         elif payload == '2_bici':
-                            user.setState(23)
+                            pass
+                            #user.setState(23)
                         else:
                             print "QUICK"
                         continue
@@ -139,7 +140,7 @@ def askAutoContext(message):
     buttons.append(button)
     bot.send_button_message(sender,"Antes que nada recuerda que nadie puede hacerte bajar del coche y no permitas que te presionen con amenazas o solicitando dinero\n" ,buttons)
     post_facebook_message(sender,"Si es algun otro podrias explicarmelo?" )
-    
+
 '''
 curl -X POST -H "Content-Type: application/json" -d '{
   "setting_type" : "call_to_actions",
