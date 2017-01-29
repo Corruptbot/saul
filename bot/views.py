@@ -8,6 +8,7 @@ from django.http.response import HttpResponse
 from fbWrapper.bot import Bot, Element, Button,QuickReply,QuickLocationReply
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
+from .models import *
 
 PAGE_ACCESS_TOKEN = os.getenv('token') #cargar al server
 VERIFY_TOKEN = "v4l1d4710n70k3n"
@@ -46,6 +47,7 @@ class BotView(generic.View):
         # multiple messages in a single call during high load
         for entry in incoming_message['entry']:
             for message in entry['messaging']:
+                user,created = Account.objects.get_or_create(fb_user = int(message['sender']['id']))
                 print message
                 # Check to make sure the received call is a message call
                 # This might be delivery, optin, postback for other events 
@@ -53,7 +55,9 @@ class BotView(generic.View):
                 if 'postback' in message:
                     if message['postback']['payload'] == 'START':
                         initConversation(message)
-                        
+                        user.state = 0
+                        user.save()
+
                     print message['postback']['payload']
                     continue
                 elif 'message' in message:
