@@ -9,6 +9,7 @@ También no está permitido dar vuelta en U, cerca de una vuelta o donde exista 
 Queda prohibido interferir los carriles exclusivos de transporte público al dar vuelta a la izquierda, derecha o en “U”, así como cambiar de calle cuando existan señalizaciones que lo impidan. (Fracción X-a)
 '''
 
-distractor = [0] = '''
-
-'''
+distractor = []
+distractor = '''
+Se prohíbe utilizar o manejar cualquier aparato electrónico o de comunicación mientras el automóvil se encuentra en movimiento. Así como distractores como mapas o cualquier objeto que afecte la visibilidad y pueda ser un distractor. (Apartado II)
+Recuerda sólo puedes utilizar tu celular cuando el vehículo está detenido.'''
