@@ -42,8 +42,8 @@ class BotView(generic.View):
     def post(self, request, *args, **kwargs):
         # Converts the text payload into a python dictionary
         incoming_message = json.loads(self.request.body.decode('utf-8'))
-        
-        # Facebook recommends going through every entry since they might send
+  		
+  		# Facebook recommends going through every entry since they might send
         # multiple messages in a single call during high load
         for entry in incoming_message['entry']:
             for message in entry['messaging']:
@@ -55,7 +55,7 @@ class BotView(generic.View):
                 if 'postback' in message:
                     if message['postback']['payload'] == 'START':
                         initConversation(message)
-                        #user.setState(0)
+                        user.setState(0)
 
                     print message['postback']['payload']
                     continue
@@ -67,20 +67,18 @@ class BotView(generic.View):
                         print payload
                         if payload == 'i_tramite':
                             bot.send_text_message(message['sender']['id'],'Aun no esta disponible')
-                            #user.setState(1)
+                            user.setState(1)
                             initConversation(message)
                         elif payload == 'i_transito':
                             initTransit(message)
-                            #user.setState(2)
+                            user.setState(2)
                         elif payload == '2_moto':
-                            #user.setState(21)
-                            pass
+                            user.setState(21)
                         elif payload == '2_auto':
                             askAutoContext(message)
-                            #user.setState(22)
+                            user.setState(22)
                         elif payload == '2_bici':
-                            pass
-                            #user.setState(23)
+                            user.setState(23)
                         else:
                             print "QUICK"
                         continue
