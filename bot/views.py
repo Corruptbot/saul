@@ -1,5 +1,7 @@
-from django.shortcuts import render
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
+from django.shortcuts import render
 # Create your views here.
 import json, requests, random, re, os
 from pprint import pprint
