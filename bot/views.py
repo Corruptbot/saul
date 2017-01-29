@@ -100,17 +100,7 @@ class BotView(generic.View):
                         else:
                             print "QUICK"
                         continue
-        
-                    if 'attachments' in message['message']:
-                        print message['message']['attachments']
-                        
-                        for attachment in message['message']['attachments']:
-                            if attachment['type']=='location':
-                                coor = attachment['payload']['coordinates']
-                                print coor['lat']
-                                print coor['long']
-                        continue
-                    
+         
                     sent_text = message['message']['text']
                     
                     resp = WIT.message(sent_text)
