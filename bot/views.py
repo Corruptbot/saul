@@ -124,6 +124,14 @@ def initTransit(message):
 
 def askAutoContext(message): 
     sender = message['sender']['id']
-
-
+    post_facebook_message(sender, "Antes que nada recuerda que nadie puede hacerte bajar del coche y no permitas que te presionen con amenazas o solicitando dinero\n" )
+    
+    buttons = []
+    buttons.append( Button(type="postback",payload="velocidad",title='Velocidad') )
+    buttons.append( Button(type="postback",payload="velocidad",title='Celular') )
+    buttons.append( Button(type="postback",payload="velocidad",title='Semaforos') )
+    buttons.append( Button(type="postback",payload="velocidad",title='Vueltas prohibidas') )
+    buttons.append( Button(type="postback",payload="velocidad",title='Verificacion') )
+    buttons.append( Button(type="postback",payload="velocidad",title='Cinturon de seguridad') )
+    bot.send_button_message(message['sender']['id'],"Bienvenido",buttons)
 
