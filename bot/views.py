@@ -61,16 +61,16 @@ class BotView(generic.View):
 
                     if 'quick_reply' in message['message']: #SOLO JALARA CON GEOLOCATION ?
                         payload = message['message']['quick_reply']['payload']
-                        if sent_text == 'i_tramite':
+                        if payload == 'i_tramite':
                             bot.send_text_message(message['sender']['id'],'Aun no esta disponible')
                             initConversation()
-                        elif sent_text == 'i_transito':
+                        elif payload == 'i_transito':
                             initTransit(message)
-                        elif sent_text == '2_moto':
+                        elif payload == '2_moto':
                             pass
-                        elif sent_text == '2_auto':
+                        elif payload == '2_auto':
                             askAutoContext(message)
-                        elif sent_text == '2_bici':
+                        elif payload == '2_bici':
                             pass
                         else:
                             print "QUICK"
