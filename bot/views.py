@@ -55,15 +55,27 @@ class BotView(generic.View):
                         initConversation(message)
                         
                     print message['postback']['payload']
-                    print 'POSTBACK'
                     continue
-                if 'quick_reply' in message: #SOLO JALARA CON GEOLOCATION ?
-                    print message['quick_reply']['payload']
-                    print 'QUICK REPLY' 
-                    continue
-
                 elif 'message' in message:
+                    {u'timestamp': 1485649341730, u'message': {u'text': u'Tramites', u'mid': u'mid.1485649341730:37fcf12738', u'seq': 35426, u'quick_reply': {u'payload': u'i_tramite'}}, u'recipient': {u'id': u'759711370868773'}, u'sender': {u'id': u'1751510654874973'}}
 
+                    if 'quick_reply' in message['message']: #SOLO JALARA CON GEOLOCATION ?
+                        payload = message['message']['quick_reply']['payload']
+                        if sent_text == 'i_tramite':
+                            bot.send_text_message(message['sender']['id'],'Aun no esta disponible')
+                            initConversation()
+                        elif sent_text == 'i_transito':
+                            initTransit(message)
+                        elif sent_text == '2_moto':
+                            pass
+                        elif sent_text == '2_auto':
+                            askAutoContext(message)
+                        elif sent_text == '2_bici':
+                            pass
+                        else:
+                            print "QUICK"
+                        continue
+        
                     if 'attachments' in message['message']:
                         print message['message']['attachments']
                         
@@ -75,21 +87,6 @@ class BotView(generic.View):
                         continue
                     
                     sent_text = message['message']['text']
-
-                    if sent_text == 'i_tramite':
-                        bot.send_text_message(message['sender']['id'],'Aun no esta disponible')
-                        initConversation()
-                    elif sent_text == 'i_transito':
-                        initTransit(message)
-                    elif sent_text == '2_moto':
-                        pass
-                    elif sent_text == '2_auto':
-                        askAutoContext(message)
-                    elif sent_text == '2_bici':
-                        pass
-
-                    
-                    
                     bot.send_text_message(message['sender']['id'],message['message']['text'])
                     # Assuming the sender only sends text. Non-text messages like stickers, audio, pictures
                     # are sent as attachments and must be handled accordingly.     
@@ -122,6 +119,6 @@ def initTransit(message):
 
 def askAutoContext(message): 
     sender = message['sender']['id']
-    
+
 
 
