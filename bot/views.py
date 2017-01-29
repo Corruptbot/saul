@@ -47,15 +47,20 @@ class BotView(generic.View):
         # multiple messages in a single call during high load
         for entry in incoming_message['entry']:
             for message in entry['messaging']:
+                user,created = Account.objects.get_or_create(fb_user=int(message['sender']['id']))
                 print message
                 # Check to make sure the received call is a message call
                 # This might be delivery, optin, postback for other events 
                 #if 'read' in message: #Lo acaba de leer
                 if 'postback' in message:
-                    if message['postback']['payload'] == 'START':
-                        print 'START'
+                    payload = message['postback']['payload']
+                    if payload == 'START':
                         initConversation(message)
-                        
+                    elif payload == 'velocidad':
+                        quicks = []
+                        quicks.append(QuickLocationReply() )
+                        bot.send_quick_replies(user.fb_user,"Selecciona",quicks)
+
                     print message['postback']['payload']
                     continue
                 elif 'message' in message:
