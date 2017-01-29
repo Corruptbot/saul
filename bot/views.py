@@ -69,8 +69,9 @@ class BotView(generic.View):
                         for attachment in message['message']['attachments']:
                             if attachment['type']=='location':
                                 coor = attachment['payload']['coordinates']
-                                print coor['lat']
-                                print coor['long']
+                                bot.send_text_message(fb_user,"El limite de velocidad en la calle de San Luis Potosi es 40km/hr")
+                                #print coor['lat']
+                                #print coor['long']
                         continue
                     elif 'quick_reply' in message['message']: #SOLO JALARA CON GEOLOCATION ?
                         payload = message['message']['quick_reply']['payload']
@@ -107,7 +108,7 @@ class BotView(generic.View):
                     if sent_text =='reset':
                         initConversation(message)
                     else:
-                        bot.send_text_message(message['sender']['id'],message['message']['text'])
+                        bot.send_text_message(user.fb_user,message['message']['text'])
                     # Assuming the sender only sends text. Non-text messages like stickers, audio, pictures
                     # are sent as attachments and must be handled accordingly.     
                 elif 'read' in message:
