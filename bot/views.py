@@ -118,10 +118,9 @@ class BotView(generic.View):
                     nums = set()
                     for i in resp['entities']:
                         section = resp['entities'][i] #number, entitie, etc
-                        print section
-                        n = ('number' == section)
                         for entitie in section:
-                            if n: #If is number
+                            print type(entitie['confidence'])
+                            if entitie['confidence'] == 1: #If is number
                                 nums.add(entitie['value'])
                             else:
                                 vals.add(entitie['value'])
