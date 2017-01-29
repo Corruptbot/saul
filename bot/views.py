@@ -68,7 +68,7 @@ class BotView(generic.View):
                         quicks = []
                         quicks.append(QuickLocationReply() )
                         bot.send_quick_replies(user.fb_user,"Donde te encuentras?",quicks)
-                        user.setState(33)
+                        user.setState(33) #En vehiculo y relacionado a velocidad
 
                     print message['postback']['payload']
                     continue
@@ -114,10 +114,14 @@ class BotView(generic.View):
                     sent_text = message['message']['text']
                     
                     resp = WIT.message(sent_text)
-                    if resp['entities']:
-                        for entitie in resp['entities']:
+                    
+                    asText = ""
+                    for i in resp['entities']:
+                        section = resp['entities'][i] #number, entitie, etc
+                        for entitie in section:
+                            asText+='%s %s% \n'%(entitie['confidence'],entitie['value'])
                             print entitie
-                            bot.send_text_message(user.fb_user,sent_text)
+                        bot.send_text_message(user.fb_user, asText)
                     else:
                         initConversation(message)
                     # Assuming the sender only sends text. Non-text messages like stickers, audio, pictures

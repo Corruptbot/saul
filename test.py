@@ -13,5 +13,13 @@ actions = {
 access_token = '5U7WOSQ7QB3OBE47OFRUHQDLRKH6PF7P'
 
 client = Wit(access_token=access_token, actions=actions)
-resp = client.message('asfasd')
-print 'Yay, got Wit.ai response: ' + str(resp)
+resp = client.message('la chota quiere que me baje del coche por pasarme un semaforo ayuda')
+#print str(resp)
+
+asText = ""
+for i in resp['entities']:
+	section = resp['entities'][i] #number, entitie, etc
+	for entitie in section:
+		asText+='%s %s% \n'%(entitie['confidence'],entitie['value'])
+		print entitie
+	
