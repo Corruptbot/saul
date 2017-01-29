@@ -143,7 +143,7 @@ class BotView(generic.View):
                             
 
 
-                        bot.send_text_message(user.fb_user, asText)
+                        #bot.send_text_message(user.fb_user, asText)
                     else:
                         initConversation(message)
                     # Assuming the sender only sends text. Non-text messages like stickers, audio, pictures
