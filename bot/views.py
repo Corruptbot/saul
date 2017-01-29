@@ -134,8 +134,7 @@ def askAutoContext(message):
     buttons.append(button)
     button = Button(type="postback",title='Semaforos',payload='semaf')
     buttons.append(button)
-    button = Button(type="postback",title='Vueltas prohibidas',payload='vueltas')
-    buttons.append(button)
+    
     bot.send_button_message(sender,"Selecciona",buttons)
 
 '''
