@@ -112,9 +112,9 @@ def initConversation(message):
     sender = message['sender']['id']
     post_facebook_message(sender, "Bienvenido\nRecuerda mantener la calma en todo momento, en que puedo ayudarte?" )
     quicks = []
-    button = QuickReply(content_type="text",title='Tramites',payload='inicio_tramite',image_url='http://www.cecyteh.edu.mx/images/menu/Tramites_servicios2.png')
+    button = QuickReply(content_type="quick_reply",title='Tramites',payload='inicio_tramite',image_url='http://www.cecyteh.edu.mx/images/menu/Tramites_servicios2.png')
     quicks.append(button)
-    button = QuickReply(content_type="text",title='Transito',payload='inicio_transito',image_url='http://www.gomesdelima.adv.br/wp-content/uploads/2015/08/icon-transito-150x150.png')
+    button = QuickReply(content_type="quick_reply",title='Transito',payload='inicio_transito',image_url='http://www.gomesdelima.adv.br/wp-content/uploads/2015/08/icon-transito-150x150.png')
     quicks.append(button)
     bot.send_quick_replies(message['sender']['id'],"Selecciona",quicks)
 
