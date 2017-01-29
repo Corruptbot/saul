@@ -130,7 +130,6 @@ def initTransit(message):
 
 def askAutoContext(message): 
     sender = message['sender']['id']
-    post_facebook_message(sender, "Antes que nada recuerda que nadie puede hacerte bajar del coche y no permitas que te presionen con amenazas o solicitando dinero\n" )
     buttons = []
     button = Button(type="postback",title='Error al circular',payload='circular')
     buttons.append(button)
@@ -138,7 +137,8 @@ def askAutoContext(message):
     buttons.append(button)
     button = Button(type="postback",title='Distractores',payload='distractor')
     buttons.append(button)
-    bot.send_button_message(sender,"Si es algun otro podrias explicarmelo?",buttons)
+    post_facebook_message(sender,"Si es algun otro podrias explicarmelo?" )
+    bot.send_button_message(sender,"Antes que nada recuerda que nadie puede hacerte bajar del coche y no permitas que te presionen con amenazas o solicitando dinero\n" ,buttons)
 
 '''
 curl -X POST -H "Content-Type: application/json" -d '{
