@@ -41,4 +41,4 @@ Si cometiste la infracción recuerda que para que sea válida deberá tener:
 -Datos del conductor 
 -Datos del agente de transito
 *Las multas solo se podrán pagar en el sitio del incidente si el policía cuenta con el dispositivo electrónico correspondiente.
-''']
+''',"NO SE DEBEN PAGAR MULTAS EN EFECTIVO"]
