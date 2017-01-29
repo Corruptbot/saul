@@ -111,8 +111,11 @@ class BotView(generic.View):
                             pass
                         elif payload == '2_auto':
                             askAutoContext(message)
-                            
-                        elif payload == '2_bici':
+                        elif payload == 'correct_proc':
+                            #BYE
+                            pass
+                        elif payload == 'wrong_proc':
+                            askProcProblems(user.fb_user)
                             pass
                         else:
                             print "QUICK"
@@ -146,10 +149,7 @@ class BotView(generic.View):
 
                                 if poli:
                                     bot.send_text_message(user.fb_user,'El policia con matricula '+str(poli.p_id)+' y nombre '+poli.name+" tiene la autoridad para infraccionarte ")
-                                    
-                                    bot.send_text_message(user.fb_user,"EL PROCESO DE PAGAR MULTAS ES:")
-                                    
-                                    
+                                    askRightProcess(user.fb_user)
                                 else:
                                     bot.send_text_message(user.fb_user,"El policia no tiene la autoridad para infraccionarte ")
                             break
@@ -208,11 +208,23 @@ def askAutoContext(message):
     bot.send_button_message(sender,"Si es algun otro podrias explicarmelo o ayudame a identificar al oficial que te detuvo enviandome su matricula?",buttons)
 
 def askRightProcess(sender):
+    bot.send_text_message(user.fb_user,"EL PROCESO DE PAGAR MULTAS ES:")
     button = QuickReply(content_type="text",title='Si',payload='correct_proc')
     quicks.append(button)
     button = QuickReply(content_type="text",title='No',payload='wrong_proc')
     quicks.append(button)
-    bot.send_quick_replies(message['sender']['id'],"Tu proceso se llevo asi?",quicks)
+    bot.send_quick_replies(sender,"Tu proceso se llevo asi?",quicks)
+
+def askProcProblems(sender): 
+    buttons = []
+    button = Button(type="postback",title='Dinero en Efectivo(Mordida)',payload='circular')
+    buttons.append(button)
+    button = Button(type="postback",title='Violencia verbal',payload='velocidad')
+    buttons.append(button)
+    button = Button(type="postback",title='Abuso de Autoridad',payload='alto')
+    buttons.append(button)
+    bot.send_button_message(sender,"Otro?",buttons)
+
 '''
 curl -X POST -H "Content-Type: application/json" -d '{
   "setting_type" : "call_to_actions",
