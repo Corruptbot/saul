@@ -247,7 +247,7 @@ def askProcProblems(sender):
 
 def connectOperador(sender):
     buttons = []
-    button = Button(type="phone_number",title='Llamar',payload='52082337')
+    button = Button(type="phone_number",title='Llamar',payload='52087445')
     buttons.append(button)
     bot.send_button_message(sender,"La corrupción es un delito, ayúdanos a combatirla denunciandola",buttons)
 
