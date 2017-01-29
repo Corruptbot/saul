@@ -89,9 +89,9 @@ class BotView(generic.View):
                                 coor = attachment['payload']['coordinates']
                                 for i in velocidad_info:
                                     bot.send_text_message(user.fb_user,i)
-                                bot.send_text_message(user.fb_user,"El limite de velocidad en la calle de San Luis Potosi es 40km/hr que pertenece a Fracción I,II y III\nPrecio de la multa")
+                                bot.send_text_message(user.fb_user,"El limite de velocidad en: Calle San Luis Potosi es 40km/hr que pertenece a Fracción I,II y III\nPrecio de la multa")
                                 bot.send_image_url(user.fb_user,"https://s3-us-west-2.amazonaws.com/cuadra-apps/Art9.png")                                
-                                bot.send_text_message(user.fb_user,"La Unidad de Cuenta de CDMX actualmente vale $73.57")
+                                bot.send_text_message(user.fb_user,"La Unidad de Cuenta de CDMX actualmente vale $73.57, multa de valor entre $735.70 y $1471.40")
                                 
                                 #print coor['lat']
                                 #print coor['long']
