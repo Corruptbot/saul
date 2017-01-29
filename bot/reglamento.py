@@ -26,7 +26,5 @@ Si los semáforos se encuentran parpadeando el conductor deberá bajar la veloci
 Entre las 23:00 horas y las 5:00 horas del día siguiente, los conductores podrán cruzar las intersecciones incluso cuando el semáforo se encuentre en rojo, esto solo después de haberse detenido completamente y revisar que no se ponga en riesgo a ningún otro vehículo o peatón. (Fracción IV)''')
 
 velocidad_info = []
-velocidad_info.append('''Primero que todo tranquilizate, los siguientes articulos se relacionan con el problema que me cuentas.
-Recuerda que no es necesario que te bajes de tu coche ya que este es propedad privada, recuerda siempre ser respetuoso con la autoridad.''')
-
-
+velocidad_info.append('''Primero que todo tranquilizate, los siguientes articulos se relacionan con el problema que me cuentas, recuerda siempre ser respetuoso con la autoridad.''')
+velocidad_info.append('''Artículo 9: Todos los conductores deberán respetar los límites de velocidad que se muestran en los señalamientos viales, en caso de que no haya indicaciones los límites son los siguientes: ''')
