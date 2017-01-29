@@ -237,7 +237,7 @@ def askRightProcess(sender):
 
 def askProcProblems(sender): 
     buttons = []
-    button = Button(type="postback",title='Solicitar dinero',payload='denuncia')
+    button = Button(type="postback",title='Soborno',payload='denuncia')
     buttons.append(button)
     button = Button(type="postback",title='Faltas de Respeto',payload='denuncia')
     buttons.append(button)
