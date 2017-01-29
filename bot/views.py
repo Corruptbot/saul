@@ -138,6 +138,7 @@ class BotView(generic.View):
                         if 'celular' in vals:
                             for i in distractor:
                                 bot.send_text_message(user.fb_user,i)
+                            continue
 
 
                         bot.send_text_message(user.fb_user, asText)
