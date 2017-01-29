@@ -128,15 +128,13 @@ def askAutoContext(message):
     buttons = []
     print 'AUTO'
     #Antes que nada recuerda que nadie puede hacerte bajar del coche y no permitas que te presionen con amenazas o solicitando dinero
-    button = QuickReply(type="postback",title='Velocidad',payload='velocidad')
+    button = Button(type="postback",title='Velocidad',payload='velocidad')
     buttons.append(button)
-    button = QuickReply(type="postback",title='Celular',payload='celular')
+    button = Button(type="postback",title='Celular',payload='celular')
     buttons.append(button)
-    button = QuickReply(type="postback",title='Semaforos',payload='semaf')
+    button = Button(type="postback",title='Semaforos',payload='semaf')
     buttons.append(button)
-    
-
-    bot.send_quick_replies(sender,"Selecciona",buttons)
+    bot.send_button_message(sender,"Selecciona",buttons)
 
 '''
 curl -X POST -H "Content-Type: application/json" -d '{
