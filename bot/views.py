@@ -126,12 +126,9 @@ def askAutoContext(message):
     sender = message['sender']['id']
     #post_facebook_message(sender, "Antes que nada recuerda que nadie puede hacerte bajar del coche y no permitas que te presionen con amenazas o solicitando dinero\n" )
     buttons = []
-    buttons.append( Button(type="postback",title='Velocidad') )
-    buttons.append( Button(type="postback",title='Celular') )
-    buttons.append( Button(type="postback",title='Semaforos') )
-    buttons.append( Button(type="postback",title='Vueltas prohibidas') )
-    buttons.append( Button(type="postback",title='Verificacion') )
-    buttons.append( Button(type="postback",title='Cinturon de seguridad') )
     print 'AUTO'
-    bot.send_button_message(sender,"Antes que nada recuerda que nadie puede hacerte bajar del coche y no permitas que te presionen con amenazas o solicitando dinero",buttons)
+    #Antes que nada recuerda que nadie puede hacerte bajar del coche y no permitas que te presionen con amenazas o solicitando dinero
+    button = Button(type="postback",title='Start chat',payload='My payload')
+    buttons.append(button)
+    bot.send_button_message(sender,"Selecciona",buttons)
 
