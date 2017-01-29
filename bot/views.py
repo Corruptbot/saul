@@ -79,6 +79,8 @@ class BotView(generic.View):
                     elif payload == 'alto':
                         for text in alto_info:
                             bot.send_text_message(user.fb_user,text)
+                    elif payload == "denuncia":
+                        pass
 
                     print message['postback']['payload']
                     continue
@@ -217,11 +219,11 @@ def askRightProcess(sender):
 
 def askProcProblems(sender): 
     buttons = []
-    button = Button(type="postback",title='Dinero en Efectivo(Mordida)',payload='circular')
+    button = Button(type="postback",title='Dinero en Efectivo(Mordida)',payload='denuncia')
     buttons.append(button)
-    button = Button(type="postback",title='Violencia verbal',payload='velocidad')
+    button = Button(type="postback",title='Violencia verbal',payload='denuncia')
     buttons.append(button)
-    button = Button(type="postback",title='Abuso de Autoridad',payload='alto')
+    button = Button(type="postback",title='Abuso de Autoridad',payload='denuncia')
     buttons.append(button)
     bot.send_button_message(sender,"Otro?",buttons)
 
