@@ -69,7 +69,7 @@ class BotView(generic.View):
                         for attachment in message['message']['attachments']:
                             if attachment['type']=='location':
                                 coor = attachment['payload']['coordinates']
-                                bot.send_text_message(fb_user,"El limite de velocidad en la calle de San Luis Potosi es 40km/hr")
+                                bot.send_text_message(user.fb_user,"El limite de velocidad en la calle de San Luis Potosi es 40km/hr")
                                 #print coor['lat']
                                 #print coor['long']
                         continue
