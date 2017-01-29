@@ -137,7 +137,7 @@ class BotView(generic.View):
 
                     if 'ayuda' in vals or 'Saludo' in vals:
                         initConversation()
-                        
+
                     if 'policia' in vals and nums: #Match de policia y matricula
                         for element in nums:    #iterar entre numeros obtenidos
                             if len(str(element)) == 6: #MAtricula
@@ -198,10 +198,10 @@ def askAutoContext(message):
     buttons.append(button)
     button = Button(type="postback",title='Pasarse alto',payload='alto')
     buttons.append(button)
-    bot.send_button_message(sender,"El agente no puede exigirte que bajes de tu auto si la infracción que cometiste no es grave, no permitas que te presionen\n" ,buttons)
+    post_facebook_message(sender,"El agente no puede exigirte que bajes de tu auto si la infracción que cometiste no es grave, no permitas que te presionen\n")
     post_facebook_message(sender,"Nadie puede revisar tu auto sin una orden judicial")
-    post_facebook_message(sender,"Si es algun otro podrias explicarmelo o ayudame a identificar al oficial que te detuvo enviandome su matricula?" )
-
+    bot.send_button_message(sender,"Si es algun otro podrias explicarmelo o ayudame a identificar al oficial que te detuvo enviandome su matricula?",buttons)
+    
 '''
 curl -X POST -H "Content-Type: application/json" -d '{
   "setting_type" : "call_to_actions",
