@@ -10,7 +10,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 from .models import *
 
-PAGE_ACCESS_TOKEN = os.getenv('token') #cargar al server
+PAGE_ACCESS_TOKEN = 'EAAUTEIO8s5ABAA4y3lVMrXsZBEiyGJ6isIvcLGhbfYdMzjWoBmvNZBUObrt9bHikhLKugvOuLVjvJ16w8DAVxL3ZAILWmK8KfPMiAZAggqyDRlyJ28ONdXpoeUw1JJhgQpPbmaD16HuAQkihebd9JL8HS33IHlgqHkNdNJrvWAZDZD'#os.getenv('token') #cargar al server
 VERIFY_TOKEN = "v4l1d4710n70k3n"
 print PAGE_ACCESS_TOKEN
 bot = Bot(PAGE_ACCESS_TOKEN)
