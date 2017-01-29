@@ -134,9 +134,9 @@ class BotView(generic.View):
                                     poli = PoliciaTransito.objects.filter(p_id=int(element)).first()
 
                                     if poli:
-                                        bot.send_text_message(user.fb_user,'El policia con matricula '+str(poli.p_id)+' y nombre '+poli.name+"tiene la autoridad para infraccionarte")
+                                        bot.send_text_message(user.fb_user,'El policia con matricula '+str(poli.p_id)+' y nombre '+poli.name+"tiene la autoridad para infraccionarte ")
                                     else:
-                                        bot.send_text_message(user.fb_user,"El policia no tiene la autoridad para infraccionarte")
+                                        bot.send_text_message(user.fb_user,"El policia no tiene la autoridad para infraccionarte ")
                                 break
                         if 'celular' in vals:
                             for i in distractor:
@@ -144,7 +144,7 @@ class BotView(generic.View):
                             continue    
 
 
-                        bot.send_text_message(user.fb_user, asText)
+                        #bot.send_text_message(user.fb_user, asText)
                     else:
                         pass
                         #initConversation(message)
