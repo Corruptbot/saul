@@ -134,12 +134,26 @@ def askAutoContext(message):
     buttons.append(button)
     button = QuickReply(type="postback",title='Semaforos',payload='semaf')
     buttons.append(button)
-    button = QuickReply(type="postback",title='Vueltas prohibidas',payload='vueltas')
-    buttons.append(button)
-    button = QuickReply(type="postback",title='Verificacion',payload='verific')
-    buttons.append(button)
-    button = QuickReply(type="postback",title='Cinturon de seguridad',payload='cinturon')
-    buttons.append(button)
+    
 
     bot.send_quick_replies(sender,"Selecciona",buttons)
+
+'''
+curl -X POST -H "Content-Type: application/json" -d '{
+  "setting_type" : "call_to_actions",
+  "thread_state" : "existing_thread",
+  "call_to_actions":[
+    {
+      "type":"postback",
+      "title":"Ayuda",
+      "payload":"START"
+    },
+    {
+      "type":"postback",
+      "title":"Descubre",
+      "payload":"DISCOVER"
+    }
+  ]
+}' "https://graph.facebook.com/v2.6/me/thread_settings?access_token=EAAUTEIO8s5ABAN8IFCYiFFR382wqvsRhfMJmS4TOQxBzmfGvoO4i0sgOcBptBApZCj5YT5ll7dZCTRZCD1B0e8zaZA85tU1PCgEUoLY710Rc4NgmQH5TvOwZBwFYSqF4MHCQB9fnn9FeRCX1J5EYzo7cBusBFAzrGYwsM5o23qwZDZD"
+'''
 
