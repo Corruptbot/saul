@@ -65,7 +65,14 @@ class BotView(generic.View):
                     print message['postback']['payload']
                     continue
                 elif 'message' in message:
-                    if 'quick_reply' in message['message']: #SOLO JALARA CON GEOLOCATION ?
+                    if 'attachments' in message['message']:
+                        for attachment in message['message']['attachments']:
+                            if attachment['type']=='location':
+                                coor = attachment['payload']['coordinates']
+                                print coor['lat']
+                                print coor['long']
+                        continue
+                    elif 'quick_reply' in message['message']: #SOLO JALARA CON GEOLOCATION ?
                         payload = message['message']['quick_reply']['payload']
 
                         if payload == 'i_tramite':
