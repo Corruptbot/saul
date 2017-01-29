@@ -130,7 +130,7 @@ class BotView(generic.View):
 
                         if 'policia' in vals and nums: #Match de policia y matricula
                             for element in nums:    #iterar entre numeros obtenidos
-                                if str(element).size == 6: #MAtricula
+                                if len(str(element)) == 6: #MAtricula
                                     poli = PoliciaTransito.objects.get(p_id=int(element))
                                     if poli:
                                         bot.send_text_message(user.fb_user,'El policia con matricula '+poli.p_id+' y nombre '+poli.name+"tiene la autoridad para infraccionarte")
