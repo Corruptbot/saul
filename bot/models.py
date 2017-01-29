@@ -14,3 +14,6 @@ class Account(models.Model):
     	self.state = state
     	self.save()
                         
+class PoliciaTransito(models.Model):
+	p_id = models.IntegerField(verbose_name='Matricula',primary_key=True) 
+	name = models.CharField(max_length=40,verbose_name='Pais') 
