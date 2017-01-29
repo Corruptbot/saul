@@ -113,11 +113,33 @@ class BotView(generic.View):
                     resp = WIT.message(sent_text)
                     
                     asText = ""
+                    
+                    vals = set()
+                    nums = set()
                     for i in resp['entities']:
                         section = resp['entities'][i] #number, entitie, etc
+                        n = 'number' == section:
                         for entitie in section:
-                            asText+=('%s %s \n'%(entitie['confidence'],entitie['value']))
-                            print entitie
+                            if n: #If is number
+                                nums.add(entitie['value'])
+                            else:
+                                vals.add(entitie['value'])
+                            #asText+=('%s %s \n'%(entitie['confidence'],entitie['value']))
+                            #print entitie
+
+                        if 'policia' in vals and nums: #Match de policia y matricula
+                            for element in nums:    #iterar entre numeros obtenidos
+                                if str(element).size == 6: #MAtricula
+                                    poli = PoliciaTransito.objects.get(p_id=int(element))
+                                    if poli:
+                                        bot.send_text_message(user.fb_user,'El policia con matricula '+poli.p_id+' y nombre '+poli.name+"tiene la autoridad para infraccionarte")
+                                    else:
+                                        bot.send_text_message(user.fb_user,"El policia no tiene la autoridad para infraccionarte")
+                        if 'celular' in vals:
+                            for i in distractor:
+                                bot.send_text_message(user.fb_user,i)
+
+
                         bot.send_text_message(user.fb_user, asText)
                     else:
                         initConversation(message)
