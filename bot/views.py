@@ -82,7 +82,7 @@ class BotView(generic.View):
                             #user.setState(23)
                         else:
                             print "QUICK"
-                        continue
+                            continue
         
                     if 'attachments' in message['message']:
                         print message['message']['attachments']
