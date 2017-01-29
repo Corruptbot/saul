@@ -132,5 +132,6 @@ def askAutoContext(message):
     buttons.append( Button(type="postback",title='Vueltas prohibidas') )
     buttons.append( Button(type="postback",title='Verificacion') )
     buttons.append( Button(type="postback",title='Cinturon de seguridad') )
+    print 'AUTO'
     bot.send_button_message(sender,"Antes que nada recuerda que nadie puede hacerte bajar del coche y no permitas que te presionen con amenazas o solicitando dinero",buttons)
 
