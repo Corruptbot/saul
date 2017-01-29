@@ -11,5 +11,5 @@ Queda prohibido interferir los carriles exclusivos de transporte público al dar
 
 distractor = []
 distractor = '''
-Se prohíbe utilizar o manejar cualquier aparato electrónico o de comunicación mientras el automóvil se encuentra en movimiento. Así como distractores como mapas o cualquier objeto que afecte la visibilidad y pueda ser un distractor. (Apartado II)
+Artículo 38: Se prohíbe utilizar o manejar cualquier aparato electrónico o de comunicación mientras el automóvil se encuentra en movimiento. Así como distractores como mapas o cualquier objeto que afecte la visibilidad y pueda ser un distractor. (Apartado II)
 Recuerda sólo puedes utilizar tu celular cuando el vehículo está detenido.'''
