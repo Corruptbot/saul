@@ -61,6 +61,7 @@ class BotView(generic.View):
 
                     if 'quick_reply' in message['message']: #SOLO JALARA CON GEOLOCATION ?
                         payload = message['message']['quick_reply']['payload']
+                        print payload
                         if payload == 'i_tramite':
                             bot.send_text_message(message['sender']['id'],'Aun no esta disponible')
                             initConversation()
@@ -86,8 +87,12 @@ class BotView(generic.View):
                                 print coor['long']
                         continue
                     
+
                     sent_text = message['message']['text']
-                    bot.send_text_message(message['sender']['id'],message['message']['text'])
+                    if sent_text =='reset':
+                        initConversation()
+                    else:
+                        bot.send_text_message(message['sender']['id'],message['message']['text'])
                     # Assuming the sender only sends text. Non-text messages like stickers, audio, pictures
                     # are sent as attachments and must be handled accordingly.     
                 elif 'read' in message:
