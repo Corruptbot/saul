@@ -223,7 +223,9 @@ def askAutoContext(message):
     bot.send_button_message(sender,"Si es algun otro podrias explicarmelo o ayudame a identificar al oficial que te detuvo enviandome su matricula?",buttons)
 
 def askRightProcess(sender):
-    bot.send_text_message(sender,"EL PROCESO DE PAGAR MULTAS ES:")
+    for t in proceso_infraccion:
+        bot.send_text_message(sender,t)
+
     buttons = []
     button = QuickReply(content_type="text",title='Si',payload='correct_proc')
     buttons.append(button)
