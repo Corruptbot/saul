@@ -64,7 +64,7 @@ class BotView(generic.View):
                         print payload
                         if payload == 'i_tramite':
                             bot.send_text_message(message['sender']['id'],'Aun no esta disponible')
-                            initConversation()
+                            initConversation(message)
                         elif payload == 'i_transito':
                             initTransit(message)
                         elif payload == '2_moto':
