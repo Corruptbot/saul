@@ -9,9 +9,17 @@ from fbWrapper.bot import Bot, Element, Button,QuickReply,QuickLocationReply
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 from .models import *
+from wit import Wit
 
+def send(request, response):print 'Sending to user...', response['text']
+def my_action(request):print 'Received from user...', request['text']
+
+actions = {'send': send,'my_action': my_action}
+witT = '5U7WOSQ7QB3OBE47OFRUHQDLRKH6PF7P'
 PAGE_ACCESS_TOKEN = 'EAAUTEIO8s5ABAA4y3lVMrXsZBEiyGJ6isIvcLGhbfYdMzjWoBmvNZBUObrt9bHikhLKugvOuLVjvJ16w8DAVxL3ZAILWmK8KfPMiAZAggqyDRlyJ28ONdXpoeUw1JJhgQpPbmaD16HuAQkihebd9JL8HS33IHlgqHkNdNJrvWAZDZD'#os.getenv('token') #cargar al server
 VERIFY_TOKEN = "v4l1d4710n70k3n"
+
+WIT = Wit(access_token=witT, actions=actions)
 print PAGE_ACCESS_TOKEN
 bot = Bot(PAGE_ACCESS_TOKEN)
 
@@ -73,7 +81,7 @@ class BotView(generic.View):
                                 #print coor['lat']
                                 #print coor['long']
                         continue
-                    elif 'quick_reply' in message['message']: #SOLO JALARA CON GEOLOCATION ?
+                    elif 'quick_reply' in message['message']:
                         payload = message['message']['quick_reply']['payload']
 
                         if payload == 'i_tramite':
@@ -103,12 +111,15 @@ class BotView(generic.View):
                                 print coor['long']
                         continue
                     
-
                     sent_text = message['message']['text']
-                    if sent_text =='reset':
+                    
+                    resp = client.message(sent_text)
+                    if resp.entities:
+                        for entitie in resp.entities:
+                            print entities
+                            bot.send_text_message(user.fb_user,message['message']['text'])
+                    else
                         initConversation(message)
-                    else:
-                        bot.send_text_message(user.fb_user,message['message']['text'])
                     # Assuming the sender only sends text. Non-text messages like stickers, audio, pictures
                     # are sent as attachments and must be handled accordingly.     
                 elif 'read' in message:
