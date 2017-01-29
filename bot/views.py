@@ -113,7 +113,7 @@ class BotView(generic.View):
                     
                     sent_text = message['message']['text']
                     
-                    resp = client.message(sent_text)
+                    resp = WIT.message(sent_text)
                     if resp.entities:
                         for entitie in resp.entities:
                             print entities
