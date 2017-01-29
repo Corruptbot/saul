@@ -118,7 +118,7 @@ class BotView(generic.View):
                         for entitie in resp.entities:
                             print entities
                             bot.send_text_message(user.fb_user,sent_text)
-                    else
+                    else:
                         initConversation(message)
                     # Assuming the sender only sends text. Non-text messages like stickers, audio, pictures
                     # are sent as attachments and must be handled accordingly.     
