@@ -74,8 +74,8 @@ class BotView(generic.View):
                         for text in giro_indebido:
                             bot.send_text_message(user.fb_user,text)
 
-                    elif payload == 'distractor':
-                        for text in distractor:
+                    elif payload == 'alto':
+                        for text in alto:
                             bot.send_text_message(user.fb_user,text)
 
                     print message['postback']['payload']
@@ -158,7 +158,7 @@ def askAutoContext(message):
     buttons.append(button)
     button = Button(type="postback",title='Exceso de velocidad',payload='velocidad')
     buttons.append(button)
-    button = Button(type="postback",title='Pasarse alto',payload='distractor')
+    button = Button(type="postback",title='Pasarse alto',payload='alto')
     buttons.append(button)
     bot.send_button_message(sender,"Antes que nada recuerda que nadie puede hacerte bajar del coche y no permitas que te presionen con amenazas o solicitando dinero\n" ,buttons)
     post_facebook_message(sender,"Si es algun otro podrias explicarmelo?" )
