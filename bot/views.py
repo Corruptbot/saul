@@ -47,7 +47,7 @@ class BotView(generic.View):
         # multiple messages in a single call during high load
         for entry in incoming_message['entry']:
             for message in entry['messaging']:
-                #user,created = Account.objects.get_or_create(fb_user = int(message['sender']['id']))
+                user,created = Account.objects.get_or_create(fb_user = int(message['sender']['id']))
                 print message
                 # Check to make sure the received call is a message call
                 # This might be delivery, optin, postback for other events 
